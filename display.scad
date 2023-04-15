@@ -1,31 +1,11 @@
-r = 2;
-width = 15;
-length = 10;
-height = 10;
-
-grid_thickness = 1.6;
-
-cube_size = 10;
-$fn = $preview ? 20 : 120;
+include <preamble.scad>
 
 tolerance = 0.1;
 overhang = 2;
 
-
 module density_cube(additional_padding = 0) {
     translate([0, -overhang-length/2+cube_size/2, height])
         cube(cube_size + 2*additional_padding, center=true);
-}
-
-module four_corners(x,y) {
-    translate([-x/2, -y/2, 0])
-        children();
-    translate([-x/2, y/2, 0])
-        children();
-    translate([x/2, -y/2, 0])
-        children();
-    translate([x/2, y/2, 0])
-        children();
 }
 
 module grid_foot() {
